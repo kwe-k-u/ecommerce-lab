@@ -22,6 +22,15 @@
 			return $this->db_query($sql);
 		}
 
+		//Adds a new category to the database
+		//returns true if successful
+		function add_product_category_cls($name){
+			//sql query
+			$sql = "INSERT INTO `categories` (`cat_name`)
+			VALUES ('$name')";
+			return $this->db_query($sql);
+		}
+
 		//adds a product to the database
 		//returns true if successful
 		function add_product_cls($cat, $brand, $title,$price,$desc,$image,$keywords){
@@ -44,11 +53,28 @@
 
 		}
 
+
+		//update the brand with the matching id
+		function update_product_category_cls($id, $categoryName){
+			//sql query
+			$sql = "UPDATE `categories` SET `cat_name`='$categoryName' WHERE `cat_id`= '$id'";
+
+			return $this->db_query($sql);
+
+		}
+
 		//---SELECTS---
 
 		function get_all_product_brands_cls(){
 			//sql query
 			$sql="SELECT * FROM `brands`";
+
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_all_product_categories_cls(){
+			//sql query
+			$sql="SELECT * FROM `categories`";
 
 			return $this->db_fetch_all($sql);
 		}
