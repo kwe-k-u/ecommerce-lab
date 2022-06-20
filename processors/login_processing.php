@@ -14,7 +14,7 @@
 
 		//if email and password checkout, save info as session and go to index page
 		if ($user_info){
-			session_user_log_in($user_info["customer_id"],$user_info["customer_email"],$user_info["user_role"]);
+			session_user_log_in($user_info["customer_id"],$user_info["user_role"]);
 			header("Location:../index.php");
 		} else { //go back
 			header("Location:../login/login.php");

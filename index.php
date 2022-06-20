@@ -24,7 +24,7 @@ require("settings/core.php");
       <?php }else { ?>
 
         <?php if (is_session_user_admin()){ ?>
-        <li><a href="view/brand.php"><button type="button" class="btn btn-success">Add Brand</button></a></li>
+        <li><a href="view/brand_list.php"><button type="button" class="btn btn-primary">Brand</button></a></li>
         <?php } ?>
       <form action="processors/login_processing.php" method="POST">
         <li><button type="submit" name="logout" class="btn btn-warning">Log out</button></li>

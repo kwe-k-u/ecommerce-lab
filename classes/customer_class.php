@@ -13,6 +13,7 @@ require("../settings/db_class.php");
 class customer_class extends db_connection
 {
 	//--INSERT--//
+	// create a new user
 	function insert_customer_cls($name, $email, $password, $city, $number, $country){
 		//encrypt user password
 		$enc_password = md5($password);

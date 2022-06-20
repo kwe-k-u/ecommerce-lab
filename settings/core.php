@@ -15,9 +15,8 @@ function is_session_logged_in(){
 }
 
 //function to logged the user into a session
-function session_user_log_in($id, $email, $role){
+function session_user_log_in($id,  $role){
 	$_SESSION["customer_id"] = $id;
-	$_SESSION["customer_email"] = $email;
 	$_SESSION["user_role"] = $role;
 
 }
@@ -31,7 +30,6 @@ function session_user_log_out(){
 	if (is_session_logged_in()){
 
 		unset($_SESSION["customer_id"]);
-		unset($_SESSION["customer_email"]);
 		unset($_SESSION["user_role"]);
 		return true;
 	}
