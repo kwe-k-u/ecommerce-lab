@@ -24,20 +24,23 @@ require("../settings/core.php");
 	<h1>easyGo</h1>
 	<h4>Login</h4>
 
-	<form action="../processors/login_processing.php" method="POST">
+	<form action="../processors/login_processing.php" method="POST" onsubmit="return validate_auth()">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="email">Email</label>
 				<input type="email" class="form-control" id="email" name="email" placeholder="Email">
+				<p id="email_error" class="error"></p>
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="password">Password</label>
 				<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+				<p id="password_error" class="error"></p>
 			</div>
 		</div>
 		<button type="submit" name="login" class="btn btn-primary">Login</button>
 	</form>
+	<script src="../js/auth_validation.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 

@@ -24,7 +24,7 @@ require("../settings/core.php");
 	<h1>easyGo</h1>
 	<h4>Create account</h4>
 
-	<form action="../processors/register_processing.php" method="POST" enctype="multipart/form-data">
+	<form action="../processors/register_processing.php" method="POST" enctype="multipart/form-data" onsubmit="return validate_auth()">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="fullName">Full name</label>
@@ -33,11 +33,13 @@ require("../settings/core.php");
 			<div class="form-group col-md-6">
 				<label for="email">Email</label>
 				<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+				<p id="email_error" class="error"></p>
 			</div>
 
 			<div class="form-group col-md-6">
 				<label for="password">Password</label>
 				<input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+				<p id="password_error" class="error"></p>
 			</div>
 		</div>
 		<div class="form-row">
@@ -68,6 +70,7 @@ require("../settings/core.php");
 		</div>
 		<button type="submit" name="register" class="btn btn-primary">Sign in</button>
 	</form>
+	<script src="../js/auth_validation.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
