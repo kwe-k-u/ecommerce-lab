@@ -2,86 +2,91 @@
 // landing/index page
 require("../settings/core.php");
 require("../controllers/product_controller.php");
-if (!is_session_logged_in()){
+if (!is_session_logged_in()) {
 	echo "You are not logged in";
 	exit();
-}elseif (!is_session_user_admin()){
+} elseif (!is_session_user_admin()) {
 	echo "You need to be an admin to access this page";
 	exit();
 }
 
-$brand_name = null;
-
-if (isset($_POST["edit_brand"])){
-	$brand_name = $_POST["brand_name"];
-	$brand_id = $_POST["brand_id"];
-}
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-  <title>easyGo- Add/Edit Brand</title>
+	<title>easyGo- Add/Edit product</title>
 </head>
 
 <body>
-	<form action=<?php if (isset($_POST["edit_brand"])){ echo "../actions/update_brand.php";}else {echo "../actions/add_brand.php";}?> method="POST" enctype="multipart/form-data">
+
+
+
+	<form action="../actions/add_product.php" method="POST" enctype="multipart/form-data">
 		<div class="form-row">
 			<div class="form-group col-md-6">
-				<label for="brand_name">Brand name</label>
-				<input type="text" class="form-control" name="brand_name" id="brand_name" placeholder="Brand Name" <?php if ($brand_name != null){echo "value='$brand_name'";} ?> required>
+				<label for="product_title">Title</label>
+				<input type="text" class="form-control" id="product_title" name="product_title" placeholder="Product name">
+			</div>
+			<div class="form-group col-md-6">
+				<label for="product_description">Description</label>
+				<input type="text" class="form-control" id="product_description" name="product_description" placeholder="Some cool product">
 			</div>
 		</div>
-		<!-- If edit action intiated this page, edit brand -->
-		<?php if (isset($_POST["edit_brand"])){ ?>
-			<input type="hidden" name="brand_id" value=<?php echo "'$brand_id'"; ?>>
-		<button type="submit" name="new_brand" class="btn btn-primary"> Edit Brand</button>
-		<?php } else { ?>
-			<!-- if add action intitated this page, add brand -->
-		<button type="submit" name="new_brand" class="btn btn-primary"> Add Brand</button>
+		<div class="form-group">
+			<label for="product_price">Price</label>
+			<input type="text" class="form-control" id="product_price" name="product_price" placeholder="">
+		</div>
+		<div class="form-group">
+			<label for="product_category">Category</label>
+			<select class="form-select" name="product_category" id="product_category" aria-label="Default select example">
+				<?php
+				$categories = get_all_product_categories_ctrl();
+				foreach ($categories as $entry) {
+					$id = $entry["cat_id"];
+					$name = $entry["cat_name"];
+					echo "<option value='$id'>$name</option>";
+				}
+				?>
 
-		<?php } ?>
+			</select>
+		</div>
+
+
+		<div class="form-group">
+			<label for="product_brand">Brand</label>
+			<select class="form-select" name="product_brand" id="product_brand" aria-label="Default select example">
+			<?php
+				$brands = get_all_product_brands_ctrl();
+				foreach ($brands as $entry) {
+					$id = $entry["brand_id"];
+					$name = $entry["brand_name"];
+					echo "<option value='$id'>$name</option>";
+				}
+				?>
+				<option value="1">One</option>
+			</select>
+		</div>
+
+		todo add image
+
+		<div class="form-group col-md-6">
+			<label for="product_keyword">Keyword</label>
+			<input type="text" class="form-control" id="product_keyword" name="product_keyword" placeholder="Keyword">
+		</div>
+		<button type="submit" name="add_product" class="btn btn-primary"> Add product</button>
 	</form>
-<br>
-<br>
-<br>
-	<!-- <li><a href="brand.php"><button type="button" class="btn btn-success">Add Brand</button></a></li> -->
+	<br>
+	<br>
+	<br>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Brand Name</th>
-      <th scope="col">Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-	<?php
-		$brand = get_all_product_brands_ctrl();
-
-		foreach ($brand as $brand) {
-	?>
-    <tr>
-      <th scope="row"><?php echo $brand["brand_id"] ?></th>
-      <td><?php echo $brand["brand_name"] ?></td>
-      <td>
-		<form action="../admin/brand.php" method="post">
-			<input type="hidden" name="brand_id" value='<?php echo $brand["brand_id"] ?>'>
-			<input type="hidden" name="brand_name" value='<?php echo $brand["brand_name"] ?>'>
-			<button type="submit" class="btn btn-success" value="test"name="edit_brand">Edit</button>
-		</form>
-	  </td>
-    </tr>
-	<?php } ?>
-  </tbody>
-</table>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
 

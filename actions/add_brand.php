@@ -14,5 +14,7 @@
 		} else {
 			echo "There was a problem with addition";
 		}
+	} else if (isset($_POST["new_product"])){
+		
 	}
 ?>

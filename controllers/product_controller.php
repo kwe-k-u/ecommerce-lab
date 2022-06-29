@@ -12,10 +12,10 @@ require("../classes/product_class.php");
 		$product = new product_class();
 		return $product->add_product_category_cls($name);
    }
-
-	function add_product_ctrl($cat, $brand, $title,$price,$desc,$image,$keywords){
+	function add_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key)	{
 		$product = new product_class();
-		return $product->add_product_cls($cat, $brand, $title,$price,$desc,$image,$keywords);
+		return $product->add_product_cls($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key);
+		;
 	}
 
 
@@ -40,5 +40,15 @@ require("../classes/product_class.php");
 		$product = new product_class();
 		return $product->get_all_product_categories_cls();
 	}
+
+	function get_all_products_ctrl(){
+		$product = new product_class();
+		return $product->get_all_products_cls();
+	}
+
+	// function add_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key)	{
+	// 	$product = new product_class();
+	// 	return $product->get_all_products_cls();
+	// }
 
 ?>

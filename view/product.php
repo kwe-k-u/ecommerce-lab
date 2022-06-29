@@ -10,12 +10,7 @@ if (!is_session_logged_in()){
 	exit();
 }
 
-$brand_name = null;
 
-if (isset($_POST["edit_brand"])){
-	$brand_name = $_POST["brand_name"];
-	$brand_id = $_POST["brand_id"];
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,13 +22,13 @@ if (isset($_POST["edit_brand"])){
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-  <title>easyGo- Add/Edit Brand</title>
+  <title>easyGo- Add/Edit product</title>
 </head>
 
 <body>
 
 			<a href="product_mng.php">
-				<button type="submit" name="new_brand" class="btn btn-primary"> Add Product</button>
+				<button type="submit" name="new_product" class="btn btn-primary"> Add Product</button>
 			</a>
 <br>
 <br>
@@ -41,26 +36,31 @@ if (isset($_POST["edit_brand"])){
 
 <table class="table">
   <thead>
+
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Brand Name</th>
-      <th scope="col">Edit</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col"> Category</th>
+      <th scope="col"> Brand</th>
+      <th scope="col"> Image</th>
+      <th scope="col"> Keyword</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
 	<?php
-		$brand = get_all_products_ctrl();
+		$product = get_all_products_ctrl();
 
-		foreach ($brand as $brand) {
+		foreach ($product as $product) {
 	?>
     <tr>
-      <th scope="row"><?php echo $brand["brand_id"] ?></th>
-      <td><?php echo $brand["brand_name"] ?></td>
+      <th scope="row"><?php echo $product["product_id"] ?></th>
+      <td><?php echo $product["product_name"] ?></td>
       <td>
-		<form action="../admin/brand.php" method="post">
-			<input type="hidden" name="brand_id" value='<?php echo $brand["brand_id"] ?>'>
-			<input type="hidden" name="brand_name" value='<?php echo $brand["brand_name"] ?>'>
-			<button type="submit" class="btn btn-success" value="test"name="edit_brand">Edit</button>
+		<form action="../admin/product.php" method="post">
+			<input type="hidden" name="product_id" value='<?php echo $product["product_id"] ?>'>
+			<button type="submit" class="btn btn-success" value="test" name="edit_product">Edit</button>
 		</form>
 	  </td>
     </tr>

@@ -33,12 +33,13 @@
 
 		//adds a product to the database
 		//returns true if successful
-		function add_product_cls($cat, $brand, $title,$price,$desc,$image,$keywords){
+		function add_product_cls($title,$desc,$price,$cat,$brand,$key)
+		{
 			//sql query
 			$sql = "INSERT INTO `products`
 			(`product_cat`,`product_brand`,`product_title`,`product_price`,
-			`product_desc`,`product_image`,`product_keywords`)
-			 VALUES ('$cat','$brand','$title','$price','$desc','$image','$keywords')";
+			`product_desc`,`product_keywords`)
+			 VALUES ('$cat','$brand','$title','$price','$desc','$key')";
 
 			return $this->db_query($sql);
 		}
@@ -68,6 +69,13 @@
 		function get_all_product_brands_cls(){
 			//sql query
 			$sql="SELECT * FROM `brands`";
+
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_all_products_cls(){
+			//sql query
+			$sql="SELECT * FROM `products`";
 
 			return $this->db_fetch_all($sql);
 		}
