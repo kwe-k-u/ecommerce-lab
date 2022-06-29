@@ -10,6 +10,7 @@
 
 		if ($success){
 			echo "Successfully added";
+			header("Location:../admin/category.php");
 		} else {
 			echo "There was a problem with addition";
 		}

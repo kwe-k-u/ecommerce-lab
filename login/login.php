@@ -24,7 +24,7 @@ require("../settings/core.php");
 	<h1>easyGo</h1>
 	<h4>Login</h4>
 
-	<form action="../processors/login_processing.php" method="POST" onsubmit="return validate_auth()">
+	<form action="../actions/login_processing.php" method="POST" onsubmit="return validate_auth()">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="email">Email</label>

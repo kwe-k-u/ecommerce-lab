@@ -24,7 +24,7 @@ require("../settings/core.php");
 	<h1>easyGo</h1>
 	<h4>Create account</h4>
 
-	<form action="../processors/register_processing.php" method="POST" enctype="multipart/form-data" onsubmit="return validate_auth()">
+	<form action="../actions/register_processing.php" method="POST" enctype="multipart/form-data" onsubmit="return validate_auth()">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="fullName">Full name</label>

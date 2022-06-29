@@ -2,14 +2,19 @@
 // landing/index page
 require("../settings/core.php");
 require("../controllers/product_controller.php");
-
-//checking auth status
 if (!is_session_logged_in()){
 	echo "You are not logged in";
 	exit();
 }elseif (!is_session_user_admin()){
 	echo "You need to be an admin to access this page";
 	exit();
+}
+
+$brand_name = null;
+
+if (isset($_POST["edit_brand"])){
+	$brand_name = $_POST["brand_name"];
+	$brand_id = $_POST["brand_id"];
 }
 ?>
 <!doctype html>
@@ -22,11 +27,17 @@ if (!is_session_logged_in()){
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-  <title>easyGo-Brand List</title>
+  <title>easyGo- Add/Edit Brand</title>
 </head>
 
 <body>
-<li><a href="brand.php"><button type="button" class="btn btn-success">Add Brand</button></a></li>
+
+			<a href="product_mng.php">
+				<button type="submit" name="new_brand" class="btn btn-primary"> Add Product</button>
+			</a>
+<br>
+<br>
+<br>
 
 <table class="table">
   <thead>
@@ -38,25 +49,24 @@ if (!is_session_logged_in()){
   </thead>
   <tbody>
 	<?php
-		$brand_list = get_all_product_brands_ctrl();
+		$brand = get_all_products_ctrl();
 
-		foreach ($brand_list as $brand) {
+		foreach ($brand as $brand) {
 	?>
     <tr>
       <th scope="row"><?php echo $brand["brand_id"] ?></th>
       <td><?php echo $brand["brand_name"] ?></td>
       <td>
-		<form action="../view/brand.php" method="post">
+		<form action="../admin/brand.php" method="post">
 			<input type="hidden" name="brand_id" value='<?php echo $brand["brand_id"] ?>'>
 			<input type="hidden" name="brand_name" value='<?php echo $brand["brand_name"] ?>'>
-			<button type="submit" class="btn btn-success" name="edit_brand">Edit</button>
+			<button type="submit" class="btn btn-success" value="test"name="edit_brand">Edit</button>
 		</form>
 	  </td>
     </tr>
 	<?php } ?>
   </tbody>
 </table>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>

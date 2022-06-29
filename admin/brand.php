@@ -1,6 +1,7 @@
 <?php
 // landing/index page
 require("../settings/core.php");
+require("../controllers/product_controller.php");
 if (!is_session_logged_in()){
 	echo "You are not logged in";
 	exit();
@@ -30,7 +31,7 @@ if (isset($_POST["edit_brand"])){
 </head>
 
 <body>
-	<form action=<?php if (isset($_POST["edit_brand"])){ echo "../processors/update_brand.php";}else {echo "../processors/add_brand.php";}?> method="POST" enctype="multipart/form-data">
+	<form action=<?php if (isset($_POST["edit_brand"])){ echo "../actions/update_brand.php";}else {echo "../actions/add_brand.php";}?> method="POST" enctype="multipart/form-data">
 		<div class="form-row">
 			<div class="form-group col-md-6">
 				<label for="brand_name">Brand name</label>
@@ -43,11 +44,43 @@ if (isset($_POST["edit_brand"])){
 		<button type="submit" name="new_brand" class="btn btn-primary"> Edit Brand</button>
 		<?php } else { ?>
 			<!-- if add action intitated this page, add brand -->
-		<button type="submit" name="new_brand" class="btn btn-primary"> Edit Brand</button>
+		<button type="submit" name="new_brand" class="btn btn-primary"> Add Brand</button>
 
 		<?php } ?>
 	</form>
+<br>
+<br>
+<br>
+	<!-- <li><a href="brand.php"><button type="button" class="btn btn-success">Add Brand</button></a></li> -->
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Brand Name</th>
+      <th scope="col">Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+	<?php
+		$brand = get_all_product_brands_ctrl();
+
+		foreach ($brand as $brand) {
+	?>
+    <tr>
+      <th scope="row"><?php echo $brand["brand_id"] ?></th>
+      <td><?php echo $brand["brand_name"] ?></td>
+      <td>
+		<form action="../admin/brand.php" method="post">
+			<input type="hidden" name="brand_id" value='<?php echo $brand["brand_id"] ?>'>
+			<input type="hidden" name="brand_name" value='<?php echo $brand["brand_name"] ?>'>
+			<button type="submit" class="btn btn-success" value="test"name="edit_brand">Edit</button>
+		</form>
+	  </td>
+    </tr>
+	<?php } ?>
+  </tbody>
+</table>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </body>
