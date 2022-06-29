@@ -45,6 +45,19 @@
 		}
 
 
+
+		function update_product_cls($title,$desc,$price,$cat,$brand,$key, $id)
+		{
+			//sql query
+			$sql = "UPDATE `products` SET
+			`product_cat`='$cat',`product_brand`='$brand',`product_title`='$title',
+			`product_price`='$price', `product_desc`='$desc',`product_keywords`='$key' WHERE `product_id` ='$id'";
+
+			return $this->db_query($sql);
+		}
+
+
+
 		//update the brand with the matching id
 		function update_product_brand_cls($id, $brandName){
 			//sql query
@@ -87,6 +100,10 @@
 			return $this->db_fetch_all($sql);
 		}
 
+		function get_product_by_id_cls($id){
+			$sql = "SELECT * FROM `products` WHERE `product_id` = $id ";
+			return $this->db_fetch_one($sql);
+		}
 
 		// function get_product_brands(){
 		// 	//sql query

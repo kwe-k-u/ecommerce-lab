@@ -12,11 +12,16 @@ require("../classes/product_class.php");
 		$product = new product_class();
 		return $product->add_product_category_cls($name);
    }
-	function add_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key)	{
-		$product = new product_class();
-		return $product->add_product_cls($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key);
-		;
-	}
+   function add_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key)	{
+	   $product = new product_class();
+	   return $product->add_product_cls($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key);
+	   ;
+   }
+   function update_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key, $id)	{
+	   $product = new product_class();
+	   return $product->update_product_cls($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key, $id);
+	   ;
+   }
 
 
 	function update_product_brand_ctrl($id, $brandName){
@@ -27,6 +32,11 @@ require("../classes/product_class.php");
 	function update_product_category_ctrl($id, $categoryName){
 		$product = new product_class();
 		return $product->update_product_category_cls($id, $categoryName);
+	}
+
+	function get_product_by_id_ctrl($id){
+		$product = new product_class();
+		return $product->get_product_by_id_cls($id);
 	}
 
 
