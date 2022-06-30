@@ -1,5 +1,5 @@
 <?php
-	require("../controllers/product_controller.php");
+	require_once("../controllers/product_controller.php");
 
 	if (isset($_POST["new_brand"])){
 		//getting the passed brand name
@@ -15,6 +15,6 @@
 			echo "There was a problem with addition";
 		}
 	} else if (isset($_POST["new_product"])){
-		
+
 	}
 ?>

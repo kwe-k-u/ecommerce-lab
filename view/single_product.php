@@ -1,5 +1,5 @@
 <?php
-require("../controllers/product_controller.php");
+require_once("../controllers/product_controller.php");
 
 $hasId = isset($_GET['product_id']);
 

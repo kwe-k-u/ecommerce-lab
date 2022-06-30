@@ -1,7 +1,7 @@
 <?php
 // landing/index page
-require("../settings/core.php");
-require("../controllers/product_controller.php");
+require_once("../settings/core.php");
+require_once("../controllers/product_controller.php");
 
 
 ?>
@@ -51,7 +51,7 @@ require("../controllers/product_controller.php");
       <td><?php echo $product["product_title"] ?></td>
       <td><?php echo "GHC ".$product["product_price"] ?></td>
       <td>
-		<form action="" method="post">
+		<form action="../actions/add_to_cart.php" method="post">
 			<input type="hidden" name="product_id" value='<?php echo $product["product_id"] ?>'>
 			<button type="submit" class="btn btn-success" name="add_to_cart">Add to Cart</button>
 		</form>

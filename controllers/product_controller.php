@@ -1,5 +1,5 @@
 <?php
-require("../classes/product_class.php");
+require_once("../classes/product_class.php");
 
 	//adds brand
 	function add_product_brand_ctrl($name){

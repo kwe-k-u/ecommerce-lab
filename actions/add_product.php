@@ -1,5 +1,5 @@
 <?php
-require("../controllers/product_controller.php");
+require_once("../controllers/product_controller.php");
 //if pos request is coming from add button click, run addition process
 	if (isset($_POST["add_product"])){
 			$product_title = $_POST["product_title"];
@@ -31,7 +31,7 @@ require("../controllers/product_controller.php");
 		$product_id =  $_POST["product_id"];
 		$product_image_file = $_POST["product_image"];
 
-		
+
 
 
 	$success = update_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key,$product_id);

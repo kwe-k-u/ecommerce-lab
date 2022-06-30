@@ -1,4 +1,5 @@
 <?php
+require_once("../controllers/cart_controller.php");
 
 	//renames an image with the name originalName.xtn to newName.xtn
 	function renameImage($newName, $originalName){
@@ -23,4 +24,10 @@
 		return $destination;
 
 	}
+
+
+	function get_user_ip_address(){
+		return $_SERVER['REMOTE_ADDR'];
+	}
+
 ?>

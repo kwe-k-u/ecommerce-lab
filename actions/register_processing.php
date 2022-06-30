@@ -1,6 +1,6 @@
 <?php
-	require("../controllers/customer_controller.php");
-	require("../functions/general_php_functions.php");
+	require_once("../controllers/customer_controller.php");
+	require_once("../functions/general_php_functions.php");
 
 	if (isset($_POST["register"])){
 		//getting form values

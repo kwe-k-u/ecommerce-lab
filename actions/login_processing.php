@@ -1,5 +1,5 @@
 <?php
-	require("../controllers/customer_controller.php");
+	require_once("../controllers/customer_controller.php");
 ;	//create session
 	require_once("../settings/core.php");
 

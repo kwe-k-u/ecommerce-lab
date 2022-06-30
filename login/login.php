@@ -1,5 +1,5 @@
 <?php
-require("../settings/core.php");
+require_once("../settings/core.php");
 	if (is_session_logged_in()){
 		echo "You are already logged in";
 		exit();

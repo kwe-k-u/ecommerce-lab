@@ -1,7 +1,7 @@
 <?php
 // landing/index page
-require("../settings/core.php");
-require("../controllers/product_controller.php");
+require_once("../settings/core.php");
+require_once("../controllers/product_controller.php");
 if (!is_session_logged_in()){
 	echo "You are not logged in";
 	exit();

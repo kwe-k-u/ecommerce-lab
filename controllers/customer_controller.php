@@ -1,5 +1,5 @@
 <?php
-	require("../classes/customer_class.php");
+	require_once("../classes/customer_class.php");
 
 	//creates an account for the user if no other user with that email exists
 	function insert_customer_ctrl($name, $email, $password, $city, $number, $country, $image ){

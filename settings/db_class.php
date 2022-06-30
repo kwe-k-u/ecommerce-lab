@@ -2,7 +2,7 @@
 //database
 
 //database credentials
-require('db_cred.php');
+require_once('db_cred.php');
 
 /**
  *@author David Sampah
@@ -20,10 +20,10 @@ class db_connection
 	*@return bolean
 	**/
 	function db_connect(){
-		
+
 		//connection
 		$this->db = mysqli_connect(SERVER,USERNAME,PASSWD,DATABASE);
-		
+
 		//test the connection
 		if (mysqli_connect_errno()) {
 			return false;
@@ -39,17 +39,17 @@ class db_connection
 	*@return bolean
 	**/
 	function db_query($sqlQuery){
-		
+
 		if (!$this->db_connect()) {
 			return false;
-		} 
+		}
 		elseif ($this->db==null) {
 			return false;
 		}
 
-		//run query 
+		//run query
 		$this->results = mysqli_query($this->db,$sqlQuery);
-		
+
 		if ($this->results == false) {
 			return false;
 		}else{
@@ -65,10 +65,10 @@ class db_connection
 	*@return bolean
 	**/
 	function db_query_escape_string($sqlQuery){
-		
-		//run query 
+
+		//run query
 		$this->results = mysqli_query($this->db,$sqlQuery);
-		
+
 		if ($this->results == false) {
 			return false;
 		}else{
@@ -82,11 +82,11 @@ class db_connection
 	*@return a record
 	**/
 	function db_fetch_one($sql){
-		
+
 		// if executing query returns false
 		if(!$this->db_query($sql)){
 			return false;
-		} 
+		}
 		//return a record
 		return mysqli_fetch_assoc($this->results);
 	}
@@ -97,11 +97,11 @@ class db_connection
 	*@return all record
 	**/
 	function db_fetch_all($sql){
-		
+
 		// if executing query returns false
 		if(!$this->db_query($sql)){
 			return false;
-		} 
+		}
 		//return all record
 		return mysqli_fetch_all($this->results, MYSQLI_ASSOC);
 	}
@@ -113,7 +113,7 @@ class db_connection
 	*@return a count
 	**/
 	function db_count(){
-		
+
 		//check if result was set
 		if ($this->results == null) {
 			return false;
@@ -121,11 +121,11 @@ class db_connection
 		elseif ($this->results == false) {
 			return false;
 		}
-		
+
 		//return a record
 		return mysqli_num_rows($this->results);
 
 	}
-	
+
 }
 ?>
