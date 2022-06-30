@@ -39,7 +39,22 @@ require("../classes/product_class.php");
 		return $product->get_product_by_id_cls($id);
 	}
 
+	function search_products_ctrl($search){
+		$product= new product_class();
+		return $product->search_products_cls($search);
+	}
 
+
+
+	function get_brand_by_id_ctrl($id){
+		$product = new product_class();
+		return $product->get_brand_by_id_cls($id);
+	}
+
+	function get_category_by_id_ctrl($id){
+		$product = new product_class();
+		return $product->get_category_by_id_cls($id);
+	}
 
 	function get_all_product_brands_ctrl(){
 		$product = new product_class();

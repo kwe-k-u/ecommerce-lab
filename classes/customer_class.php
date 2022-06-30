@@ -14,13 +14,13 @@ class customer_class extends db_connection
 {
 	//--INSERT--//
 	// create a new user
-	function insert_customer_cls($name, $email, $password, $city, $number, $country){
+	function insert_customer_cls($name, $email, $password, $city, $number, $country, $image){
 		//encrypt user password
 		$enc_password = md5($password);
 		//the sql query
-		$sql = "INSERT INTO `customer` (`customer_name`,`customer_email`, `customer_pass`, `customer_city`, `customer_contact`, `customer_country`, `user_role`)
+		$sql = "INSERT INTO `customer` (`customer_name`,`customer_email`, `customer_pass`, `customer_city`, `customer_contact`, `customer_country`, `customer_image`, `user_role`)
 		 VALUES
-		 ('$name', '$email', '$enc_password', '$city', '$number', '$country','2')";
+		 ('$name', '$email', '$enc_password', '$city', '$number', '$country', '$image','2')";
 
 		//executing and returning the query
 		return $this->db_query($sql);
@@ -60,36 +60,6 @@ class customer_class extends db_connection
 
 
 	//--UPDATE--//
-	function insert_profile_image_cls($email,$image){
-
-		//getting the user's id
-		$id = $this->get_id_by_email_cls($email);
-		$id = $id["customer_id"];
-
-
-		//return false if no user exists with the passed email
-		if (!$id){
-			return false;
-		}
-
-		//location to save profile image
-		$path =getcwd()."/../data/images/profiles/".$id;
-
-		//creating the directory if it does not exist
-		if (!file_exists($path)) {
-			return mkdir($path, 0777, true);
-		}
-		//moving the image to the directory
-		$file = $path."/".$image["name"];
-		// return $file;
-		 return copy($image['tmp_name'], $file);
-		return move_uploaded_file($image["tmp_name"], $path);
-
-		$sql = "UPDATE `customer` SET `customer_image`='$file' WHERE `customer_id`='$id'";
-
-		return $this->db_query($sql);
-
-	}
 
 
 

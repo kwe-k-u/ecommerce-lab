@@ -100,6 +100,21 @@
 			return $this->db_fetch_all($sql);
 		}
 
+		function get_brand_by_id_cls($id){
+			$sql = "SELECT * FROM `brands` WHERE `brand_id` = $id";
+			return $this->db_fetch_one($sql);
+		}
+
+		function search_products_cls($search){
+			$sql = "SELECT * FROM `products` WHERE `product_keywords` LIKE '%$search%' OR `product_title` LIKE '%$search%'";
+			return $this->db_fetch_all($sql);
+		}
+
+		function get_category_by_id_cls($id){
+			$sql = "SELECT * FROM `categories` WHERE `cat_id` = $id";
+			return $this->db_fetch_one($sql);
+		}
+
 		function get_product_by_id_cls($id){
 			$sql = "SELECT * FROM `products` WHERE `product_id` = $id ";
 			return $this->db_fetch_one($sql);

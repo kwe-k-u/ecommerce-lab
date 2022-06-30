@@ -29,7 +29,9 @@ require("../controllers/product_controller.php");
 		$product_brand =  $_POST["product_brand"];
 		$product_key =  $_POST["product_keyword"];
 		$product_id =  $_POST["product_id"];
-		// $product_ = $_POST["add_product"]; TODO add image
+		$product_image_file = $_POST["product_image"];
+
+		
 
 
 	$success = update_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key,$product_id);

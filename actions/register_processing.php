@@ -12,12 +12,15 @@
 		$country = $_POST["country"];
 		$image = $_FILES["image"];
 
-		var_dump($image);
 
-		echo getcwd();
+		//upload profile image and get path
+		$imagePath = insert_profile_image_fn($image);
+		// echo $imagePath;
+
+
 
 		// creating the user's account
-		$success = insert_customer_ctrl($name, $email, $password, $city, $number, $country, $image);
+		$success = insert_customer_ctrl($name, $email, $password, $city, $number, $country, $imagePath);
 		// echo $success;
 
 

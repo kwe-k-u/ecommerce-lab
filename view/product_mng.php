@@ -88,7 +88,10 @@ if ($runUpdate){
 			</select>
 		</div>
 
-		todo add image
+		<div class="mb-3">
+				<label for="image" class="form-label">Image for product</label>
+				<input class="form-control" type="file" accept="image/*" id="product_image" name="product_image" >
+			</div>
 
 		<div class="form-group col-md-6">
 			<label for="product_keyword">Keyword</label>
@@ -109,33 +112,6 @@ if ($runUpdate){
 	<br>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Brand Name</th>
-      <th scope="col">Edit</th>
-    </tr>
-  </thead>
-  <tbody>
-	<?php
-		$products = get_all_products_ctrl();
-
-		foreach ($products as $product) {
-	?>
-    <tr>
-      <th scope="row"><?php echo $product["product_id"] ?></th>
-      <td><?php echo $product["product_title"] ?></td>
-      <td>
-		<form action="" method="post">
-			<input type="hidden" name="product_id" value='<?php echo $product["product_id"] ?>'>
-			<button type="submit" class="btn btn-success" name="update_product">Edit</button>
-		</form>
-	  </td>
-    </tr>
-	<?php } ?>
-  </tbody>
-</table>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
