@@ -39,7 +39,11 @@ require_once("../controllers/product_controller.php");
   </thead>
   <tbody>
 	<?php
+	if (isset($_GET["search_keys"])){
 		$products = search_products_ctrl($_GET["search_keys"]);
+	} else {
+		$products = get_all_products_ctrl();
+	}
 		if ($products != false){
 		foreach ($products as $product) {
 	?>
@@ -65,6 +69,7 @@ require_once("../controllers/product_controller.php");
 		echo "<center> No products to display</center>";
 	}
 	?>
+
   </tbody>
 </table>
 

@@ -1,8 +1,8 @@
 <?php
 // landing/index page
 require_once("../settings/core.php");
-require_once("../controllers/cart_controller.php");
 require_once("../controllers/product_controller.php");
+require_once("../controllers/cart_controller.php");
 
 
 ?>
@@ -35,6 +35,8 @@ require_once("../controllers/product_controller.php");
   </thead>
   <tbody>
 	<?php
+	// require_once("classes/cart_class.php");
+	// $cart_class = new cart_class();
 	if (is_session_logged_in()){
 		//if user is signed in, get the cart by their id
 		$cart = get_cart_by_customer_ctrl(get_session_user_id());
@@ -47,6 +49,7 @@ require_once("../controllers/product_controller.php");
 		foreach ($cart as $item) {
 	?>
     <tr>
+	  <form action="../actions/manage_quantity_cart.php" method="post">
 		<td>
 		<?php
 			$name = get_product_by_id_ctrl($item["p_id"])["product_title"];
@@ -54,15 +57,18 @@ require_once("../controllers/product_controller.php");
 		?>
 		</td>
 
-	  <td><?php echo $item["qty"] ?></td>
+
+	  <td> <input type='number' name='quantity' value = '<?php echo $item["qty"] ?>'></td>
       <td>
-	  <form action="" method="post">
-			<input type="hidden" name="product_id" value='<?php echo $product["product_id"] ?>'>
-			<button type="submit" class="btn btn-success" name="add_to_cart">Update</button>
+			<input type="hidden" name="product_id" value='<?php echo $item["p_id"] ?>'>
+			<button type="submit" class="btn btn-success" name="update_cart">Update</button>
 		</form>
 		<!-- <?php $id=$product["product_id"];echo "<a href='single_product.php?product_id=$id'>" ?> -->
+
+		<form action="../actions/remove_from_cart.php" method="post">
+		<input type="hidden" name="product_id" value='<?php echo $item["p_id"] ?>'>
 		<button  class="btn btn-primary" name="remove_item" >Remove</button>
-		</a>
+		</form>
 	  </td>
     </tr>
 	<?php } ?>

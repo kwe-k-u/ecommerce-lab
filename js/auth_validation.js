@@ -4,7 +4,7 @@ var email_error = document.getElementById("email_error");
 
 
 function validate_auth(){
-	var email = document.getElementById("email");
+	var email = document.getElementById("email").on;
 	var password = document.getElementById("password");
 
 	var email_result = validate_email(email.value);
@@ -25,7 +25,7 @@ function validate_password(password_string){
 		password_error.innerText = "";
 		return true;
 	}
-	password_error.innerText = "Password must be 8 characters with at least one number"
+	password_error.innerText = "Password must be 8 characters with at least one number with no special characters"
 	return false;
 }
 

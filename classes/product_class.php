@@ -33,25 +33,25 @@
 
 		//adds a product to the database
 		//returns true if successful
-		function add_product_cls($title,$desc,$price,$cat,$brand,$key)
+		function add_product_cls($title,$desc,$price,$cat,$brand,$key, $image)
 		{
 			//sql query
 			$sql = "INSERT INTO `products`
 			(`product_cat`,`product_brand`,`product_title`,`product_price`,
-			`product_desc`,`product_keywords`)
-			 VALUES ('$cat','$brand','$title','$price','$desc','$key')";
+			`product_desc`,`product_keywords`, `product_image`)
+			 VALUES ('$cat','$brand','$title','$price','$desc','$key', '$image')";
 
 			return $this->db_query($sql);
 		}
 
 
 
-		function update_product_cls($title,$desc,$price,$cat,$brand,$key, $id)
+		function update_product_cls($title,$desc,$price,$cat,$brand,$key, $id, $image)
 		{
 			//sql query
 			$sql = "UPDATE `products` SET
 			`product_cat`='$cat',`product_brand`='$brand',`product_title`='$title',
-			`product_price`='$price', `product_desc`='$desc',`product_keywords`='$key' WHERE `product_id` ='$id'";
+			`product_price`='$price', `product_desc`='$desc',`product_keywords`='$key', `product_image` = '$image' WHERE `product_id` ='$id'";
 
 			return $this->db_query($sql);
 		}

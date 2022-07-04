@@ -1,6 +1,7 @@
 <?php
 // landing/index page
 require_once("settings/core.php");
+require_once("controllers/cart_controller.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,7 +22,8 @@ require_once("settings/core.php");
 <br>
   <ol>
   <li><a href="view/all_product.php"><button type="button" class="btn btn-primary">All Products</button></a></li>
-  <li><a href="view/cart.php"><button type="button" class="btn btn-warning">Cart</button></a></li>
+  <li><a href="view/cart.php"><button type="button" class="btn btn-warning">Cart
+  </button></a></li>
 
 <form action="view/search_result.php" method="get">
   <input type="search" name="search_keys" id="search_keys">

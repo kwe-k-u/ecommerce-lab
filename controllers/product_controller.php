@@ -12,15 +12,13 @@ require_once("../classes/product_class.php");
 		$product = new product_class();
 		return $product->add_product_category_cls($name);
    }
-   function add_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key)	{
+   function add_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key, $image)	{
 	   $product = new product_class();
-	   return $product->add_product_cls($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key);
-	   ;
+	   return $product->add_product_cls($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key, $image);
    }
-   function update_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key, $id)	{
+   function update_product_ctrl($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key, $id, $image)	{
 	   $product = new product_class();
-	   return $product->update_product_cls($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key, $id);
-	   ;
+	   return $product->update_product_cls($product_title,$product_desc,$product_price,$product_cat,$product_brand,$product_key, $id, $image);
    }
 
 
